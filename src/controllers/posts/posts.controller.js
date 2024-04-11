@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+const { getPagination } = require('../../helpers/utils');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -12,6 +14,7 @@ exports.createPost = async (req, res) => {
       tags: tagsString,
     },
   });
+  post.tags = post.tags.split(',');
   res.status(201).json(post);
 };
 
@@ -30,6 +33,7 @@ exports.getPostById = async (req, res) => {
     where: { id },
   });
   if (post) {
+    post.tags = post.tags.split(',');
     res.json(post);
   } else {
     res.status(404).json({ message: 'Post not found' });
@@ -49,6 +53,7 @@ exports.updatePost = async (req, res) => {
     },
   });
   if (updatedPost) {
+    updatedPost.tags = updatedPost.tags.split(',');
     res.json(updatedPost);
   } else {
     res.status(404).json({ message: 'Post not found' });
@@ -61,6 +66,7 @@ exports.deletePost = async (req, res) => {
     where: { id },
   });
   if (deletedPost) {
+    deletedPost.tags = deletedPost.tags.split(',');
     res.json(deletedPost);
   } else {
     res.status(404).json({ message: 'Post not found' });
