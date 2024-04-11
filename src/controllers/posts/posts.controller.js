@@ -19,10 +19,11 @@ exports.createPost = async (req, res) => {
 };
 
 exports.listPosts = async (req, res) => {
-  const { startIndex, endIndex } = getPagination(req.query);
+  const { startIndex, endIndex, sortBy = 'title', order = 'asc' } = getPagination(req.query);
   const posts = await prisma.post.findMany({
     skip: startIndex,
     take: endIndex - startIndex,
+    orderBy: { [sortBy]: order },
   });
   res.json(posts);
 };

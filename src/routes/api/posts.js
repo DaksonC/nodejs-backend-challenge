@@ -42,10 +42,7 @@ const postsController = require('../../controllers/posts/posts.controller');
  *     responses:
  *       '201':
  *         description: Postagem criada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Post'
+ *
  *       '400':
  *         description: Erro ao criar a postagem
  */
@@ -62,12 +59,7 @@ router.post('/', postsController.createPost);
  *     responses:
  *       '200':
  *         description: Lista de postagens obtida com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Post'
+ *
  *       '404':
  *         description: Nenhuma postagem encontrada
  */
@@ -92,10 +84,7 @@ router.get('/', postsController.listPosts);
  *     responses:
  *       '200':
  *         description: Postagem encontrada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Post'
+ *
  *       '404':
  *         description: Postagem não encontrada
  */
@@ -125,10 +114,7 @@ router.get('/:id', postsController.getPostById);
  *     responses:
  *       '200':
  *         description: Postagem atualizada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Post'
+ *
  *       '404':
  *         description: Postagem não encontrada
  */

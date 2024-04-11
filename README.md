@@ -47,7 +47,7 @@ $ npx prisma migrate dev --name init
 $ npm start
 ```
 
-The server will be running at `http://localhost:3000`.
+The server will be running at `http://localhost:3333`.
 
 ## Routes
 
@@ -58,6 +58,28 @@ The API has the following routes:
 - `GET /api/posts/:id`: Gets a post by ID
 - `PUT /api/posts/:id`: Updates a post by ID
 - `DELETE /api/posts/:id`: Deletes a post by ID
+
+## Pagination
+
+This API implements pagination for the `/posts` route which lists all the posts. Pagination is done by passing the `startIndex` and `endIndex` parameters in the GET request URL.
+
+For example:
+
+`/posts?startIndex=0&endIndex=10` will return the first 10 posts
+`/posts?startIndex=10&endIndex=20` will return the next 10 posts
+
+Additionally, you can optionally sort the posts by passing the `sortBy` and `order` parameters. By default, posts are sorted by `title` in `asc` (ascending) order.
+
+Examples:
+
+- `/posts?startIndex=0&endIndex=10&sortBy=title&order=desc` will return the first 10 posts sorted by title in descending order
+- `/posts?startIndex=0&endIndex=10&sortBy=createdAt&order=asc` will return the first 10 posts sorted by creation date in ascending order
+
+You can also filter the posts by passing other relevant query parameters. For example, to filter by title:
+
+- `/posts?startIndex=0&endIndex=10&title=My Post` will return the first 10 posts whose title contains "My Post"
+
+Remember to adjust the values of startIndex and endIndex according to your needs to get the desired page of results.
 
 ## Testing
 
