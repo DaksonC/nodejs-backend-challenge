@@ -48,6 +48,7 @@ $ npm start
 ```
 
 The server will be running at `http://localhost:3000`.
+Documentation will be in `http://localhost:3000/docs`.
 
 ## Routes
 
