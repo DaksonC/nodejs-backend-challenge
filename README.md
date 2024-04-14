@@ -44,7 +44,7 @@ $ npx prisma migrate dev --name init
 2. Start the server:
 
 ```bash
-$ npm start
+$ npm run dev
 ```
 
 The server will be running at `http://localhost:3333`.
@@ -53,33 +53,53 @@ The server will be running at `http://localhost:3333`.
 
 The API has the following routes:
 
-- `POST /api/posts`: Creates a new post
-- `GET /api/posts`: Lists all posts (with pagination)
-- `GET /api/posts/:id`: Gets a post by ID
-- `PUT /api/posts/:id`: Updates a post by ID
-- `DELETE /api/posts/:id`: Deletes a post by ID
+### `POST /api/posts`
 
-## Pagination
+Creates a new post.
 
-This API implements pagination for the `/posts` route which lists all the posts. Pagination is done by passing the `startIndex` and `endIndex` parameters in the GET request URL.
+- Body Parameters:
+  - `title`: String (required) - The title of the post
+  - `body`: String (required) - The body/content of the post
+  - `tags`: Array of Strings - Optional tags for categorizing the post
+  - `authorId`: String (required) - The ID of the author of the post
 
-For example:
+### `GET /api/posts`
 
-`/posts?startIndex=0&endIndex=10` will return the first 10 posts
-`/posts?startIndex=10&endIndex=20` will return the next 10 posts
+Lists all user posts with optional pagination and filtering.
 
-Additionally, you can optionally sort the posts by passing the `sortBy` and `order` parameters. By default, posts are sorted by `title` in `asc` (ascending) order.
+### `GET /api/posts/all`
+
+Lists all posts from all users with optional pagination and filtering.
+
+- Query Parameters:
+  - `startIndex`: Number (optional) - Index of the first post to fetch (default: 0)
+  - `endIndex`: Number (optional) - Index of the last post to fetch (default: 10)
+  - `sortBy`: String (optional) - Field to sort the posts by (default: "title")
+  - `order`: String (optional) - Sort order ("asc" for ascending, "desc" for descending)
+  - `title`: String (optional) - Filter posts by title
+  - `authorId`: String (optional) - Filter posts by author ID
 
 Examples:
 
-- `/posts?startIndex=0&endIndex=10&sortBy=title&order=desc` will return the first 10 posts sorted by title in descending order
-- `/posts?startIndex=0&endIndex=10&sortBy=createdAt&order=asc` will return the first 10 posts sorted by creation date in ascending order
+`/api/posts?startIndex=0&endIndex=10&sortBy=title&order=desc` - Fetches the first 10 posts sorted by title in descending order
+`/api/posts?startIndex=0&endIndex=10&title=My Post` - Fetches the first 10 posts with title containing "My Post"
 
-You can also filter the posts by passing other relevant query parameters. For example, to filter by title:
+### `GET /api/posts/:id`
 
-- `/posts?startIndex=0&endIndex=10&title=My Post` will return the first 10 posts whose title contains "My Post"
+Gets a post by ID.
 
-Remember to adjust the values of startIndex and endIndex according to your needs to get the desired page of results.
+### `PUT /api/posts/:id`
+
+Updates a post by ID.
+
+Body Parameters (same as POST /api/posts)
+
+### `DELETE /api/posts/:id`
+
+Deletes a post by ID.
+
+Pagination
+Pagination is implemented for the` /api/posts` route. You can use the `startIndex` and `endIndex` query parameters to paginate the results.
 
 ## Testing
 

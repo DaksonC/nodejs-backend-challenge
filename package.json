@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js --watch",
-    "dev": "nodemon src/app.js",
-    "test": "mocha --recursive --exit --timeout 5000",
+    "start": "node --inspect src/app.js",
+    "dev": "nodemon --inspect src/app.js",
+    "test": "npx jest --watchAll --no-cache --detectOpenHandles --trace-warnings",
     "migrate:dev": "npx prisma migrate dev",
     "migrate:reset": "npx prisma migrate reset"
   },
@@ -25,6 +25,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "nodemon": "^3.1.0",
     "prisma": "^5.12.1",
     "swagger-autogen": "^2.23.7"
   }
