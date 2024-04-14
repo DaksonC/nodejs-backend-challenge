@@ -47,6 +47,11 @@ $ npx prisma migrate dev --name init
 $ npm run dev
 ```
 
+3. Start Prisma Server:
+```bash
+$ prisma studio
+```
+
 The server will be running at `http://localhost:3333`.
 
 To access route documentation `http://localhost:3333/api-docs`
