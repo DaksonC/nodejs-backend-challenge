@@ -127,5 +127,5 @@ Pagination is implemented for the` /api/posts` route. You can use the `startInde
 To run unit tests, use the following command:
 
 ```bash
-$ npm test
+$ npm run test
 ```

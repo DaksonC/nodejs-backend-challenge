@@ -16,7 +16,14 @@ exports.createUser = async (req, res) => {
         password: hashedPassword,
       },
     });
-    res.status(201).json(user);
+
+    const userResponse = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    };
+
+    res.status(201).json(userResponse);
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ message: 'Failed to create user' });
