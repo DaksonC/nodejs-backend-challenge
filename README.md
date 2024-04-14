@@ -51,7 +51,26 @@ The server will be running at `http://localhost:3333`.
 
 ## Routes
 
+NOTE: with the exception of the `POST /api/users`, `GET /api/auth/login` and `GET /api/posts/all` routes, all routes require authentication.
+
 The API has the following routes:
+
+### `POST /api/users`
+
+Create user.
+
+- Body Parameters:
+  - `name`: String (required) - Username to be registered
+  - `email`: String (required) - E-mail of the user to be registered
+  - `password`: String (required) - Password for the user to be registered
+
+### `GET /api/auth/login`
+
+Login
+
+- Body Parameters:
+  - `email`: String (required) - E-mail of the user to be registered
+  - `password`: String (required) - Password for the user to be registered
 
 ### `POST /api/posts`
 

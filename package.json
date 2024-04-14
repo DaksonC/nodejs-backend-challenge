@@ -15,10 +15,13 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.12.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "chai": "^5.1.0",
     "chai-http": "^4.4.0",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mocha": "^10.4.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
