@@ -49,6 +49,8 @@ $ npm run dev
 
 The server will be running at `http://localhost:3333`.
 
+To access route documentation `http://localhost:3333/api-docs`
+
 ## Routes
 
 NOTE: with the exception of the `POST /api/users`, `GET /api/auth/login` and `GET /api/posts/all` routes, all routes require authentication.
