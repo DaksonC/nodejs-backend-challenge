@@ -71,7 +71,7 @@ Create user.
   - `email`: String (required) - E-mail of the user to be registered
   - `password`: String (required) - Password for the user to be registered
 
-### `GET /api/auth/login`
+### `POST /api/auth/login`
 
 Login
 
